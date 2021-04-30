@@ -8,5 +8,5 @@ jobs:
     executor: win/default
     steps:
       - checkout
-      - run: python --version
-      - run: pip --version
+      - run: pip install -r requirements.txt
+      - run: conan --version
