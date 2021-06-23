@@ -1,65 +1,75 @@
 {
-	"version": "0.2.1",
-	"tasks": [
-		// PYTHON ENVIRONMENT
-		{
-			"taskName": "pipenv_install",
-			"taskLabel": "setup python environment",
-			"appliesTo": "requirements.txt",
-			"type": "launch",
-			"contextType": "custom",
-			"command": "pipenv",
-			"args": [
-				"install",
-				"-r",
-				"requirements.txt"
-			],
-			"env": {
-				"PIPENV_NOSPIN": 1,
-				"PIPENV_VENV_IN_PROJECT": 1
-			},
-			"output": "HELL YEAH"
-		},
-		// CONAN INSTALL TASKS
-		{
-			"taskName": "conan_install-x86_64-Debug",
-			"taskLabel": "install Conan dependencies (x86_64-Debug)",
-			"appliesTo": "conanfile.py",
-			"type": "launch",
-			"contextType": "custom",
-			"command": "pipenv",
-			"args": [
-				"run",
-				"conan",
-				"install",
-				".",
-				"-if",
-				"${workspaceRoot}\\out\\build\\x86_64-Debug",
-				"-s",
-				"compiler.cppstd=17",
-				"--profile",
-				"x86_64-Windows-v142-Debug"
-			]
-		},
-		{
-			"taskName": "conan_install-x86_64-Release",
-			"taskLabel": "install Conan dependencies (x86_64-Release)",
-			"appliesTo": "conanfile.py",
-			"type": "launch",
-			"contextType": "custom",
-			"command": "pipenv",
-			"args": [
-				"run",
-				"conan",
-				"install",
-				".",
-				"-if",
-				"${workspaceRoot}\\out\\build\\x86_64-Release",
-				"-s",
-				"compiler.cppstd=17",
-				"--profile",
-				"x86_64-Windows-v142-Release"
-			]
-		}
-	]
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "pipenv_install",
+      "taskLabel": "setup Python environment",
+      "appliesTo": "requirements.txt",
+      "type": "launch",
+      "contextType": "custom",
+      "command": "pipenv",
+      "args": [
+        "install",
+        "-r",
+        "requirements.txt"
+      ],
+      "env": {
+        "PIPENV_NOSPIN": 1,
+        "PIPENV_VENV_IN_PROJECT": 1
+      }
+    },
+    {
+      "taskName": "conan_config",
+      "taskLabel": "config Conan",
+      "appliesTo": "conanfile.py",
+      "type": "launch",
+      "contextType": "custom",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "conan",
+        "config",
+        "install",
+        ".conan",
+        "--type",
+        "dir"
+      ]
+    },
+    {
+      "taskName": "conan_install-x86_64-Debug",
+      "taskLabel": "install Conan dependencies (x86_64-Debug)",
+      "appliesTo": "conanfile.py",
+      "type": "launch",
+      "contextType": "custom",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "conan",
+        "install",
+        ".",
+        "-if",
+        "${workspaceRoot}\\out\\build\\x86_64-Debug",
+        "--profile",
+        "x86_64-Windows-v142-Debug"
+      ]
+    },
+    {
+      "taskName": "conan_install-x86_64-Release",
+      "taskLabel": "install Conan dependencies (x86_64-Release)",
+      "appliesTo": "conanfile.py",
+      "type": "launch",
+      "contextType": "custom",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "conan",
+        "install",
+        ".",
+        "-if",
+        "${workspaceRoot}\\out\\build\\x86_64-Release",
+        "--profile",
+        "x86_64-Windows-v142-Release"
+      ]
+    }
+  ]
 }

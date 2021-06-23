@@ -5,7 +5,7 @@ import os
 
 class MsixtyConan(ConanFile):
     name = "msixty"
-    license = "Proprietary"
+    license = "MIT"
     url = "https://github.com/tradingview/msixty"
     description = "Making your MSIX experience ten times better!"
     topics = ("msix", "installer", "bootstrapper")
@@ -44,6 +44,7 @@ class MsixtyConan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        msixty_bin = os.path.join(self.package_folder, "bin")
-        self.output.info(f"Appending PATH environment variable: {msixty_bin}")
-        self.env_info.PATH.append(msixty_bin)
+        for bin_dir in self.cpp_info.bindirs:
+            msixty_bin = os.path.join(self.package_folder, bin_dir)
+            self.output.info(f"Appending PATH environment variable: {msixty_bin}")
+            self.env_info.PATH.append(msixty_bin)

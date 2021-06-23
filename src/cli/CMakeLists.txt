@@ -12,16 +12,9 @@ add_executable(${CLI_TARGET_NAME}
     ${CLI_RESOURCES}
 )
 
-target_compile_features(${CLI_TARGET_NAME}
-    PRIVATE
-        cxx_std_17
-)
-
 target_compile_definitions(${CLI_TARGET_NAME}
     PRIVATE
         UNICODE
 )
 
-install(TARGETS ${CLI_TARGET_NAME}
-	RUNTIME DESTINATION bin
-)
+install(TARGETS ${CLI_TARGET_NAME})

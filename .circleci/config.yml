@@ -9,4 +9,5 @@ jobs:
     steps:
       - checkout
       - run: pip install -r requirements.txt
-      - run: conan create . 0.0.0.0@tradingview/testing -s compiler.cppstd=17
+      - run: conan config install .conan --type dir
+      - run: conan create . 0.0.0@tradingview/testing --profile x86_64-Windows-v142-Release
