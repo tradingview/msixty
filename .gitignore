@@ -1,0 +1,9 @@
+### Python ###
+# Virtual environment
+/.venv
+
+### Visual Studio ###
+/.vs/*
+
+### Build artifacts ###
+out/
