@@ -4,14 +4,13 @@
     {
       "taskName": "pipenv_install",
       "taskLabel": "setup Python environment",
-      "appliesTo": "requirements.txt",
+      "appliesTo": "Pipfile",
       "type": "launch",
       "contextType": "custom",
       "command": "pipenv",
       "args": [
         "install",
-        "-r",
-        "requirements.txt"
+        "--dev",
       ],
       "env": {
         "PIPENV_NOSPIN": 1,

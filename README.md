@@ -25,6 +25,6 @@ Initialize lefthook with the following command
 
 ## Run conan for creating package:
 ```
-$ pipenv run conan config install .config --type dir
+$ pipenv run conan config install .conan --type dir
 $ pipenv run conan create . 0.0.0@tradingview/testing --profile x86_64-Windows-v142-Release -tbf out\\test_package_build\\x86_64-Release
 ```

@@ -2,11 +2,6 @@
 # Virtual environment
 /.venv
 
-### Pipenv ###
-# Pipfile and Pipfile.lock are ignored because we still have to use requirements.txt
-/Pipfile
-/Pipfile.lock
-
 ### Visual Studio ###
 /.vs/*
 

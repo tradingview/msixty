@@ -8,6 +8,7 @@ jobs:
     executor: win/default
     steps:
       - checkout
-      - run: pip install -r requirements.txt
-      - run: conan config install .conan --type dir
-      - run: conan create . 0.0.0@tradingview/testing --profile x86_64-Windows-v142-Release
+      - run: pip install pipenv==2021.11.15
+      - run: $env:PIPENV_VENV_IN_PROJECT=1; pipenv install --dev
+      - run: pipenv run conan config install .conan --type dir
+      - run: pipenv run conan create . 0.0.0@tradingview/testing --profile x86_64-Windows-v142-Release
